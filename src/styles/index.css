@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scrollable areas never chain their scroll to the page behind them */
+  * {
+    overscroll-behavior: contain;
+  }
+
+  body {
+    @apply font-sans;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+
+  .fancy-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(129, 140, 248, 0.45) transparent;
+    overscroll-behavior: contain;
+  }
+  .fancy-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .fancy-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .fancy-scroll::-webkit-scrollbar-thumb {
+    background: rgba(129, 140, 248, 0.45);
+    border-radius: 999px;
+  }
+  .fancy-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(129, 140, 248, 0.7);
+  }
+}
